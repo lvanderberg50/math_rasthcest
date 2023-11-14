@@ -1,0 +1,26 @@
+import random
+
+def monte_carlo_pi(num_samples):
+    inside_circle = 0
+    total_points = num_samples
+
+    for i in range(num_samples):
+        x = random.uniform(0, 1)
+        y = random.uniform(0, 1)
+
+        # Проверяем, находится ли точка внутри круга
+        if x**2 + y**2 <= 1:
+            inside_circle += 1
+
+    # Вычисляем приближенное значение числа π
+    pi_estimate = 4 * inside_circle / total_points
+
+    return pi_estimate
+
+# Вычисляем приближенное значение числа pi для разного количества точек
+num_samples_list = [100, 1000, 10000, 100000, 1000000]
+
+for num_samples in num_samples_list:
+    pi = monte_carlo_pi(num_samples)
+    print(f"Для {num_samples} точек, π ≈ {pi}")
+
